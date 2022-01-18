@@ -9,6 +9,11 @@ namespace SchoolApi.Controllers
     [ApiController]
     public class ClassroomController : ControllerBase
     {
+        //public ClassroomController(SchoolContext schoolContext)
+        //{
+
+        //}
+
         [HttpGet]
         public IActionResult GetClassrooms()
         {
