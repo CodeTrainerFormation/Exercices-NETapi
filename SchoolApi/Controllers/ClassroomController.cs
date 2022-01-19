@@ -1,7 +1,9 @@
-﻿using DomainModel;
+﻿using Dal;
+using DomainModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SchoolApi.Controllers
 {
@@ -9,10 +11,13 @@ namespace SchoolApi.Controllers
     [ApiController]
     public class ClassroomController : ControllerBase
     {
-        //public ClassroomController(SchoolContext schoolContext)
-        //{
+        public ClassroomController(SchoolContext schoolContext)
+        {
+            //schoolContext.Database.EnsureDeleted();
+            //schoolContext.Database.EnsureCreated();
 
-        //}
+            //schoolContext.Classrooms.ToList();
+        }
 
         [HttpGet]
         public IActionResult GetClassrooms()

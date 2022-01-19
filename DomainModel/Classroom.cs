@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainModel
 {
-    //[Table("Classroom")]
+    [Table("Classroom")]
     public class Classroom
     {
         //[Key]

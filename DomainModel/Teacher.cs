@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DomainModel
 {
+    [Table("Teacher")]
     public class Teacher : Person
     {
         [Required]
@@ -15,7 +17,7 @@ namespace DomainModel
         [Range(1000, 3000)]
         public int Salary { get; set; }
 
-        public int ClassroomID { get; set; }
+        public int? ClassroomID { get; set; }
         public virtual Classroom Classroom { get; set; }
     }
 }
