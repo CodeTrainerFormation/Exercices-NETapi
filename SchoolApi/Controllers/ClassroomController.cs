@@ -2,6 +2,7 @@
 using DomainModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,43 +12,47 @@ namespace SchoolApi.Controllers
     [ApiController]
     public class ClassroomController : ControllerBase
     {
+        private readonly SchoolContext schoolContext;
+
         public ClassroomController(SchoolContext schoolContext)
         {
             //schoolContext.Database.EnsureDeleted();
             //schoolContext.Database.EnsureCreated();
 
-            //schoolContext.Classrooms.ToList();
+            this.schoolContext = schoolContext;
         }
 
         [HttpGet]
+        //[Route("")]
+        //[Route("List")]
         public IActionResult GetClassrooms()
         {
-            var classrooms = new List<Classroom>()
-            {
-                new Classroom()
-                {
-                    ClassroomID = 1,
-                    Name = "Salle Bill Gates",
-                    Floor = 1,
-                    Corridor = "Rouge"
-                },
-                new Classroom()
-                {
-                    ClassroomID = 2,
-                    Name = "Salle Scott Hanselman",
-                    Floor = 2,
-                    Corridor = "Bleu"
-                },
-                new Classroom()
-                {
-                    ClassroomID = 3,
-                    Name = "Salle Satya Nadella",
-                    Floor = 1,
-                    Corridor = "Violet"
-                },
-            };
+            //var classrooms = new List<Classroom>()
+            //{
+            //    new Classroom()
+            //    {
+            //        ClassroomID = 1,
+            //        Name = "Salle Bill Gates",
+            //        Floor = 1,
+            //        Corridor = "Rouge"
+            //    },
+            //    new Classroom()
+            //    {
+            //        ClassroomID = 2,
+            //        Name = "Salle Scott Hanselman",
+            //        Floor = 2,
+            //        Corridor = "Bleu"
+            //    },
+            //    new Classroom()
+            //    {
+            //        ClassroomID = 3,
+            //        Name = "Salle Satya Nadella",
+            //        Floor = 1,
+            //        Corridor = "Violet"
+            //    },
+            //};
 
-            return Ok(classrooms);
+            return Ok(this.schoolContext.Classrooms.ToList()) ;
         }
 
         [HttpGet("{id}")]
