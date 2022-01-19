@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolApi", "SchoolApi\SchoolApi.csproj", "{CF27DCC9-318B-4C24-BCDC-B356CE724EB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{2AFA185A-765D-4155-A8E2-3F5CC152662C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainModel", "DomainModel\DomainModel.csproj", "{2AFA185A-765D-4155-A8E2-3F5CC152662C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{6ADF956C-D49D-407F-B34B-E9A795A69394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{6ADF956C-D49D-407F-B34B-E9A795A69394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Dal\Dal.csproj", "{FE713E11-2F16-4EF7-B7C5-30179C67CC4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Dal\Dal.csproj", "{FE713E11-2F16-4EF7-B7C5-30179C67CC4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalWebsite", "ExternalWebsite\ExternalWebsite.csproj", "{52403793-FDE7-49C2-9DAB-9A3663A9EC4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FE713E11-2F16-4EF7-B7C5-30179C67CC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE713E11-2F16-4EF7-B7C5-30179C67CC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE713E11-2F16-4EF7-B7C5-30179C67CC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52403793-FDE7-49C2-9DAB-9A3663A9EC4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52403793-FDE7-49C2-9DAB-9A3663A9EC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52403793-FDE7-49C2-9DAB-9A3663A9EC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52403793-FDE7-49C2-9DAB-9A3663A9EC4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

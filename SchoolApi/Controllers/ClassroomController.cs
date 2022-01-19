@@ -9,6 +9,8 @@ using System.Linq;
 
 namespace SchoolApi.Controllers
 {
+    [Produces("application/json")]
+    //[Route("Class")]
     [Route("[controller]")]
     [ApiController]
     public class ClassroomController : ControllerBase
@@ -26,6 +28,7 @@ namespace SchoolApi.Controllers
         [HttpGet]
         //[Route("")]
         //[Route("List")]
+        [ProducesResponseType(200)]
         public IActionResult GetClassrooms()
         {
             //var classrooms = new List<Classroom>()
@@ -55,10 +58,15 @@ namespace SchoolApi.Controllers
 
             return Ok(this.schoolContext.Classrooms
                                         //.Include(c => c.Students)
+                                        //.Skip(10)
+                                        //.Take(10)
                                         .ToList());
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult GetClassroom(int id)
         {
             if(id <= 0)
@@ -73,6 +81,7 @@ namespace SchoolApi.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(201)]
         public IActionResult PostClassroom(Classroom classroom)
         {
             // ajout
@@ -83,6 +92,8 @@ namespace SchoolApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(204)]
         public IActionResult PutClassroom(int id, Classroom classroom)
         {
             if(id != classroom.ClassroomID)
@@ -99,6 +110,9 @@ namespace SchoolApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult DeleteClassroom(int id)
         {
             if (id <= 0)

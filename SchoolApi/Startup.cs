@@ -39,10 +39,20 @@ namespace SchoolApi
                 config.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "School API",
-                    Description = "A simple exercice ASP.NET Core Web API"
+                    Title = "SchoolApi",
+                    Description = "WebService de l’école"
                 });
 
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(p =>
+                {
+                    p.AllowAnyHeader();
+                    p.WithOrigins("https://localhost:44344");
+                    p.WithMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+                });
             });
         }
 
@@ -55,6 +65,8 @@ namespace SchoolApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseStaticFiles();
 
