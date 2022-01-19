@@ -16,7 +16,7 @@ namespace DomainModel
         public int Floor { get; set; }
         public string Corridor { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public virtual ICollection<Student> Students { get; set; }
 
         [JsonIgnore]

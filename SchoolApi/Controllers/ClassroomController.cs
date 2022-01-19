@@ -2,6 +2,7 @@
 using DomainModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,9 @@ namespace SchoolApi.Controllers
             //    },
             //};
 
-            return Ok(this.schoolContext.Classrooms.ToList()) ;
+            return Ok(this.schoolContext.Classrooms
+                                        //.Include(c => c.Students)
+                                        .ToList());
         }
 
         [HttpGet("{id}")]
@@ -61,13 +64,10 @@ namespace SchoolApi.Controllers
             if(id <= 0)
                 return BadRequest();
 
-            Classroom classroom = new Classroom()
-            {
-                ClassroomID = 1,
-                Name = "Salle Bill Gates",
-                Floor = 1,
-                Corridor = "Rouge"
-            };
+            var classroom = this.schoolContext.Classrooms.Find(id);
+
+            if (classroom == null)
+                return NotFound();
 
             return Ok(classroom);
         }
@@ -76,9 +76,10 @@ namespace SchoolApi.Controllers
         public IActionResult PostClassroom(Classroom classroom)
         {
             // ajout
-            classroom.ClassroomID = 123;
+            this.schoolContext.Classrooms.Add(classroom);
+            this.schoolContext.SaveChanges();
 
-            return Created("Classroom/123", classroom);
+            return Created($"Classroom/{classroom.ClassroomID}", classroom);
         }
 
         [HttpPut("{id}")]
@@ -88,6 +89,11 @@ namespace SchoolApi.Controllers
                 return BadRequest();
 
             // mise à jour
+            this.schoolContext.Classrooms.Update(classroom);
+            int modifiedLines = this.schoolContext.SaveChanges();
+
+            if (modifiedLines == 0)
+                return BadRequest();
 
             return NoContent();
         }
@@ -99,14 +105,13 @@ namespace SchoolApi.Controllers
                 return BadRequest();
 
             //suppression
+            var classroom = this.schoolContext.Classrooms.Find(id);
 
-            Classroom classroom = new Classroom()
-            {
-                ClassroomID = 1,
-                Name = "Salle Bill Gates",
-                Floor = 1,
-                Corridor = "Rouge"
-            };
+            if (classroom == null)
+                return NotFound();
+
+            this.schoolContext.Classrooms.Remove(classroom);
+            this.schoolContext.SaveChanges();
 
             return Ok(classroom);
         }
